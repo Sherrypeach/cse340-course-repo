@@ -1,0 +1,17 @@
+<%- include('partials/header', { title: title }) %>
+
+<section class="page-intro">
+  <h1><%= title %></h1>
+  <p>Explore service projects by category.</p>
+</section>
+
+<section class="category-grid">
+  <% categories.forEach((cat) => { %>
+    <div class="category-card">
+      <h2><%= cat.name %></h2>
+      <p><%= cat.description %></p>
+    </div>
+  <% }); %>
+</section>
+
+<%- include('partials/footer') %>
