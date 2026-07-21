@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<h1><%= organization.name %></h1>
+<p><%= organization.description %></p>
+<p>
+  <%= organization.address %>, <%= organization.city %>, <%= organization.state %> <%= organization.zip %><br />
+  <%= organization.phone %> &middot; <%= organization.email %>
+</p>
+
+<h2>Service Projects</h2>
+<% if (projects.length === 0) { %>
+  <p>This organization has no service projects yet.</p>
+<% } else { %>
+  <ul class="list-page">
+    <% projects.forEach(project => { %>
+      <li><a href="/project/<%= project.id %>"><%= project.name %></a></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<%- include('partials/footer') %>

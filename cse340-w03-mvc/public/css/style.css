@@ -1,0 +1,106 @@
+:root {
+  --primary: #1c4e80;
+  --accent: #f39c12;
+  --bg: #f7f7f7;
+  --text: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  background: var(--primary);
+  color: #fff;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-header .logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1.25rem;
+  font-weight: 600;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 2rem 1.25rem;
+  min-height: 60vh;
+}
+
+h1 {
+  color: var(--primary);
+}
+
+a {
+  color: var(--primary);
+}
+
+.list-page {
+  list-style: none;
+  padding: 0;
+}
+
+.list-page li {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.site-footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}

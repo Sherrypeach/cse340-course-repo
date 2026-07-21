@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+<h1><%= title %></h1>
+
+<ul class="list-page">
+  <% organizations.forEach(org => { %>
+    <li><a href="/organization/<%= org.id %>"><%= org.name %></a></li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer') %>
