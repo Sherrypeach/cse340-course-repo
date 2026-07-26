@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 require("dotenv").config();
 
+const pool = require("./database");
 const organizationRoute = require("./routes/organizationRoute");
 const projectRoute = require("./routes/projectRoute");
 const categoryRoute = require("./routes/categoryRoute");
@@ -45,7 +47,30 @@ app.use((err, req, res, next) => {
   });
 });
 
+/* Initialize the database (creates tables/seed data if they don't exist yet) */
+async function initDb() {
+  try {
+    const check = await pool.query(
+      "SELECT to_regclass('public.organizations') AS exists"
+    );
+    if (!check.rows[0].exists) {
+      const sql = fs.readFileSync(
+        path.join(__dirname, "src", "setup.sql"),
+        "utf8"
+      );
+      await pool.query(sql);
+      console.log("Database initialized from setup.sql");
+    } else {
+      console.log("DB already initialized, skipping setup.sql");
+    }
+  } catch (err) {
+    console.error("initDb error:", err.message);
+  }
+}
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`App listening on http://localhost:${PORT}`);
+initDb().then(() => {
+  app.listen(PORT, () => {
+    console.log(`App listening on http://localhost:${PORT}`);
+  });
 });
