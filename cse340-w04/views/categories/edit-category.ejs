@@ -1,0 +1,28 @@
+<section>
+  <h1><%= title %></h1>
+
+  <% if (typeof errors !== 'undefined' && errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/categories/edit-category/<%= category_id %>" method="post" novalidate>
+    <input type="hidden" name="category_id" value="<%= category_id %>">
+
+    <label for="category_name">Category Name</label>
+    <input
+      type="text"
+      id="category_name"
+      name="category_name"
+      value="<%= category_name %>"
+      required
+      maxlength="100"
+    >
+    <!-- minlength intentionally omitted client-side; server enforces min 3 -->
+
+    <button type="submit">Update Category</button>
+  </form>
+</section>

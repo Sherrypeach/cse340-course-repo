@@ -1,0 +1,27 @@
+<section>
+  <h1><%= title %></h1>
+
+  <% if (typeof errors !== 'undefined' && errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/organizations/new-organization" method="post" novalidate>
+    <label for="organization_name">Organization Name</label>
+    <input
+      type="text"
+      id="organization_name"
+      name="organization_name"
+      value="<%= locals.organization_name || '' %>"
+      required
+      minlength="3"
+      maxlength="150"
+    >
+    <p class="form-hint">Must be between 3 and 150 characters.</p>
+
+    <button type="submit">Add Organization</button>
+  </form>
+</section>

@@ -1,0 +1,49 @@
+<section>
+  <h1><%= title %></h1>
+
+  <% if (typeof errors !== 'undefined' && errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/projects/new-project" method="post" novalidate>
+    <label for="project_name">Project Name</label>
+    <input
+      type="text"
+      id="project_name"
+      name="project_name"
+      value="<%= locals.project_name || '' %>"
+      required
+      minlength="3"
+      maxlength="150"
+    >
+
+    <label for="project_description">Project Description</label>
+    <textarea
+      id="project_description"
+      name="project_description"
+      required
+      minlength="3"
+      maxlength="1000"
+      rows="5"
+    ><%= locals.project_description || '' %></textarea>
+
+    <label for="organization_id">Organization</label>
+    <select id="organization_id" name="organization_id" required>
+      <option value="" disabled <%= !locals.organization_id ? 'selected' : '' %>>Choose an organization</option>
+      <% organizationList.forEach(org => { %>
+        <option
+          value="<%= org.organization_id %>"
+          <%= (locals.organization_id == org.organization_id) ? 'selected' : '' %>
+        >
+          <%= org.organization_name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <button type="submit">Add Project</button>
+  </form>
+</section>

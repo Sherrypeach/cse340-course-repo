@@ -1,0 +1,50 @@
+<section>
+  <h1><%= title %></h1>
+
+  <% if (typeof errors !== 'undefined' && errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/projects/edit-project/<%= project_id %>" method="post" novalidate>
+    <input type="hidden" name="project_id" value="<%= project_id %>">
+
+    <label for="project_name">Project Name</label>
+    <input
+      type="text"
+      id="project_name"
+      name="project_name"
+      value="<%= project_name %>"
+      required
+      minlength="3"
+      maxlength="150"
+    >
+
+    <label for="project_description">Project Description</label>
+    <textarea
+      id="project_description"
+      name="project_description"
+      required
+      minlength="3"
+      maxlength="1000"
+      rows="5"
+    ><%= project_description %></textarea>
+
+    <label for="organization_id">Organization</label>
+    <select id="organization_id" name="organization_id" required>
+      <% organizationList.forEach(org => { %>
+        <option
+          value="<%= org.organization_id %>"
+          <%= (organization_id == org.organization_id) ? 'selected' : '' %>
+        >
+          <%= org.organization_name %>
+        </option>
+      <% }) %>
+    </select>
+
+    <button type="submit">Update Project</button>
+  </form>
+</section>

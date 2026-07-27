@@ -1,0 +1,29 @@
+<section>
+  <h1><%= title %></h1>
+
+  <% if (typeof errors !== 'undefined' && errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/organizations/edit-organization/<%= organization_id %>" method="post" novalidate>
+    <input type="hidden" name="organization_id" value="<%= organization_id %>">
+
+    <label for="organization_name">Organization Name</label>
+    <input
+      type="text"
+      id="organization_name"
+      name="organization_name"
+      value="<%= organization_name %>"
+      required
+      minlength="3"
+      maxlength="150"
+    >
+    <p class="form-hint">Must be between 3 and 150 characters.</p>
+
+    <button type="submit">Update Organization</button>
+  </form>
+</section>

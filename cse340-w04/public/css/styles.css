@@ -1,0 +1,269 @@
+/* ==========================================================
+   CSE 340 - Service Project Tracker
+   Professional, accessible base styles
+   ========================================================== */
+
+:root {
+  --color-primary: #1d4e5f;
+  --color-primary-dark: #133641;
+  --color-accent: #d98e04;
+  --color-bg: #f7f7f5;
+  --color-surface: #ffffff;
+  --color-text: #1c1c1c;
+  --color-border: #d9d9d6;
+  --color-notice-bg: #fff4d6;
+  --color-notice-border: #d98e04;
+  --focus-ring: 3px solid #005fcc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  min-height: 60vh;
+}
+
+/* -------------------- Header -------------------- */
+.site-header {
+  background-color: var(--color-primary);
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.site-title {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+/* -------------------- Footer -------------------- */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* -------------------- Headings -------------------- */
+h1 {
+  color: var(--color-primary-dark);
+  margin-top: 0;
+}
+
+/* -------------------- Buttons / links -------------------- */
+.btn,
+button[type="submit"] {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus,
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: var(--color-primary-dark);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+/* Visible focus outline for keyboard users (accessibility) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* -------------------- Page header row -------------------- */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+/* -------------------- Tables -------------------- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.data-table th {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* -------------------- Forms -------------------- */
+form {
+  background-color: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  max-width: 550px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+  color: var(--color-text);
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.25rem 0 0;
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+button[type="submit"] {
+  margin-top: 1.25rem;
+}
+
+/* -------------------- Flash / validation messages -------------------- */
+.flash-message,
+.notice {
+  background-color: var(--color-notice-bg);
+  border: 1px solid var(--color-notice-border);
+  border-left: 5px solid var(--color-notice-border);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  list-style-position: inside;
+}
+
+.notice li {
+  margin: 0.15rem 0;
+}
+
+/* -------------------- Hero (home page) -------------------- */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero p {
+  color: #444;
+  margin-bottom: 1.75rem;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* -------------------- Error page -------------------- */
+.error-page {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+/* -------------------- Small screens -------------------- */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  form {
+    max-width: 100%;
+  }
+}

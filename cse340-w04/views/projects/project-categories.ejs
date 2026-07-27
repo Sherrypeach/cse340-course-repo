@@ -1,0 +1,31 @@
+<section>
+  <h1>Assign Categories</h1>
+  <p>Project: <strong><%= project.project_name %></strong></p>
+
+  <form action="/projects/<%= project.project_id %>/categories" method="post">
+    <fieldset>
+      <legend>Select all categories that apply</legend>
+
+      <% if (categoryList && categoryList.length > 0) { %>
+        <% categoryList.forEach(cat => { %>
+          <div class="checkbox-row">
+            <input
+              type="checkbox"
+              id="category_<%= cat.category_id %>"
+              name="category_ids"
+              value="<%= cat.category_id %>"
+              <%= assignedCategoryIds.includes(cat.category_id) ? 'checked' : '' %>
+            >
+            <label for="category_<%= cat.category_id %>"><%= cat.category_name %></label>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No categories exist yet. <a href="/categories/new-category">Add one first.</a></p>
+      <% } %>
+    </fieldset>
+
+    <button type="submit">Save Categories</button>
+  </form>
+
+  <p><a href="/projects/<%= project.project_id %>">&larr; Back to project details</a></p>
+</section>

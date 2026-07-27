@@ -1,0 +1,29 @@
+<section>
+  <div class="page-header">
+    <h1>Categories</h1>
+    <a class="btn" href="/categories/new-category">+ Add New Category</a>
+  </div>
+
+  <% if (categoryList && categoryList.length > 0) { %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% categoryList.forEach(cat => { %>
+          <tr>
+            <td><%= cat.category_name %></td>
+            <td>
+              <a href="/categories/edit-category/<%= cat.category_id %>">Edit</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>No categories have been added yet.</p>
+  <% } %>
+</section>
